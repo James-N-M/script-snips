@@ -15,6 +15,8 @@ class SnippetsController extends Controller
 
     public function create(Snippet $snippet)
     {
+        $this->authorize('create', Snippet::class);
+
         return view('snippets.create', compact('snippet'));
     }
 
@@ -27,13 +29,14 @@ class SnippetsController extends Controller
     {
         $this->validate(request(), [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
         ]);
 
         Snippet::create([
             'title' => request('title'),
             'body' => request('body'),
             'forked_id' => request('forked_id'),
+            'user_id' => auth()->id(),
         ]);
 
         return redirect('/');

@@ -16,6 +16,7 @@ class CreateSnippetsTable extends Migration
         Schema::create('snippets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('forked_id')->nullable();
+            $table->unsignedInteger('user_id');
             $table->string('title');
             $table->text('body');
             $table->timestamps();

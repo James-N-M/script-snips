@@ -11,11 +11,15 @@ class SnippetsTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    public function test_a_guest_can_create_a_snippet()
+    public function test_a_user_can_create_a_snippet()
     {
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
         $attributes = [
             'title' => $this->faker->name,
             'body' => $this->faker->sentence,
+            'user_id' => auth()->id()
         ];
 
         $this->get('/snippets/create')->assertStatus(200);
@@ -41,6 +45,8 @@ class SnippetsTest extends TestCase
 
     public function test_a_guest_can_fork_a_snippet()
     {
+        $this->signIn();
+
         $snippet = factory(Snippet::class)->create();
 
         // View the snippet

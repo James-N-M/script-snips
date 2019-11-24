@@ -38,7 +38,6 @@ class SnippetTest extends TestCase
 
     /** @test */
     public function it_belongs_to_a_user() {
-$this->withoutExceptionHandling();
         $this->signIn();
 
         $snippet = factory('App\Snippet')->create(['user_id' => auth()->id()]);

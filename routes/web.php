@@ -17,6 +17,8 @@ Route::get('/snippets/{snippet}/fork', 'SnippetsController@create');
 Route::get('/snippets/{snippet}', 'SnippetsController@show');
 Route::post('/snippets', 'SnippetsController@store');
 
+Route::get('user/{user}/snippets', 'UserSnippets@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

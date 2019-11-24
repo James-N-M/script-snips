@@ -67,4 +67,12 @@ class SnippetsTest extends TestCase
 
         $this->assertDatabaseHas('snippets', ['forked_id' => $snippet->id]);
     }
+
+    public function test_a_user_can_view_their_snippets() {
+        $this->signIn();
+
+        $snippet = factory(Snippet::class)->create(['user_id' => auth()->id()]);
+
+        $this->get("user/" . auth()->id() . "/snippets")->assertSee($snippet->body);
+    }
 }

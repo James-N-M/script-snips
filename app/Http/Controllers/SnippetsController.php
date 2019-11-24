@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Language;
 use App\Snippet;
 
 class SnippetsController extends Controller
@@ -17,7 +18,9 @@ class SnippetsController extends Controller
     {
         $this->authorize('create', Snippet::class);
 
-        return view('snippets.create', compact('snippet'));
+        $languages = Language::all();
+
+        return view('snippets.create', compact('snippet', 'languages'));
     }
 
     public function show(Snippet $snippet)
@@ -30,6 +33,7 @@ class SnippetsController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
+            'user_id' => 'required'
         ]);
 
         Snippet::create([
@@ -37,6 +41,7 @@ class SnippetsController extends Controller
             'body' => request('body'),
             'forked_id' => request('forked_id'),
             'user_id' => auth()->id(),
+            'language_id' => request('language_id')
         ]);
 
         return redirect('/');

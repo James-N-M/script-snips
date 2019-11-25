@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Snippet extends Model
 {
+    use Likeability;
+
     protected $guarded = [];
 
     public function forks()

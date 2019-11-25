@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Snippet;
+use App\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -20,6 +21,26 @@ class SnippetsTest extends TestCase
             'title' => $this->faker->name,
             'body' => $this->faker->sentence,
             'user_id' => auth()->id()
+        ];
+
+        $this->get('/snippets/create')->assertStatus(200);
+
+        $this->post('/snippets', $attributes);
+
+        $this->assertDatabaseHas('snippets', $attributes);
+    }
+
+    public function test_a_user_can_create_a_snippet_with_a_language()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->signIn();
+
+        $attributes = [
+            'title' => $this->faker->name,
+            'body' => $this->faker->sentence,
+            'user_id' => auth()->id(),
+            'language_id' => factory(Language::class)->create()->id
         ];
 
         $this->get('/snippets/create')->assertStatus(200);
@@ -62,7 +83,8 @@ class SnippetsTest extends TestCase
         $this->post('/snippets', [
             'forked_id' => $snippet->id,
             'title' => $snippet->title,
-            'body' => $snippet->body
+            'body' => $snippet->body,
+            'user_id' => auth()->id()
         ]);
 
         $this->assertDatabaseHas('snippets', ['forked_id' => $snippet->id]);

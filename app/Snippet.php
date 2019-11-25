@@ -28,4 +28,9 @@ class Snippet extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
 }

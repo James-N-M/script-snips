@@ -44,4 +44,16 @@ class SnippetTest extends TestCase
 
         $this->assertInstanceOf('App\User', $snippet->creator);
     }
+
+    /** @test */
+    public function it_belongs_to_a_language() {
+        $this->signIn();
+
+        $language = factory('App\Language')->create();
+        $snippet = factory('App\Snippet')->create(['user_id' => auth()->id(), 'language_id' => $language->id]);
+
+        $this->assertInstanceOf('App\Language', $snippet->language);
+    }
+
+
 }

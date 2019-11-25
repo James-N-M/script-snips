@@ -33,7 +33,6 @@ class SnippetsController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
-            'user_id' => 'required'
         ]);
 
         Snippet::create([

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="d-flex justify-content-between">
         <h1>{{ $snippet->title }}</h1>
 
         <a href="/snippets/{{$snippet->id}}/fork">Fork it</a>

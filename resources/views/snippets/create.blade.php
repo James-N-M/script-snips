@@ -21,7 +21,7 @@
                 <select name="language_id" class="form-control">
                     <option value=""></option>
                     @foreach($languages as $language)
-                        @if ($snippet->language_id === $language->id)
+                        @if ($snippet->language_id == $language->id)
                             <option selected value="{{$language->id}}">{{$language->name}}</option>
                         @else
                             <option value="{{$language->id}}">{{$language->name}}</option>

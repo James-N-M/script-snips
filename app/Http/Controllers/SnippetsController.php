@@ -11,7 +11,9 @@ class SnippetsController extends Controller
     {
         $snippets = Snippet::all();
 
-        return view('snippets.index', compact('snippets'));
+        $languages = Language::all();
+
+        return view('snippets.index', compact('snippets', 'languages'));
     }
 
     public function create(Snippet $snippet)

@@ -30,6 +30,7 @@ class SnippetLikesController extends Controller
     public function store(Snippet $snippet)
     {
         $snippet->toggle();
+        return redirect('/');
     }
 
     /**

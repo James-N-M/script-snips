@@ -35,4 +35,12 @@ class Snippet extends Model
         return $this->belongsTo(Language::class);
     }
 
+    public function scopeForLanguage($builder, $language)
+    {
+        if($language) {
+            return $builder->where('language_id', $language->id);
+        }
+        return $builder;
+    }
+
 }

@@ -4,15 +4,23 @@
     <div class="row">
         <div class="col-md-2">
             <ul>
-                @foreach($languages as $language)
-                    <a href="#">
-                        <li>{{$language->name}}</li>
+                <a href="/snippets">
+                    <li>All</li>
+                </a>
+                @foreach($languages as $l)
+                    <a href="/snippets/{{$l->name}}">
+                        <li>{{$l->name}}</li>
                     </a>
                 @endforeach
             </ul>
         </div>
 
-        <div class="col">
+        <div class="col-md-10">
+            @if ($language)
+                <h2>{{ $language->name }} Snippets</h2>
+            @else
+                <h2>Snippets</h2>
+            @endif
             @foreach ($snippets as $snippet)
                 <div class="card mb-4">
                     <h3 class="card-header text-primary">
@@ -34,6 +42,7 @@
                     </div>
                 </div>
             @endforeach
+            {{ $snippets->links() }}
         </div>
     </div>
 @endsection

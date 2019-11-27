@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'SnippetsController@index')->name('home');
+Route::get('/snippets', 'SnippetsController@index')->name('home');
 Route::get('/snippets/create', 'SnippetsController@create');
+Route::get('/snippets/{language}', 'SnippetsController@index');
 Route::get('/snippets/{snippet}/fork', 'SnippetsController@create');
 Route::get('/snippets/{snippet}', 'SnippetsController@show');
 Route::post('/snippets/{snippet}/like', 'SnippetLikesController@store');

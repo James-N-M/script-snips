@@ -33,7 +33,7 @@ class SnippetTest extends TestCase
         factory('App\Snippet')->create(['forked_id' => $snippet->id]);
         factory('App\Snippet')->create(['forked_id' => $snippet->id]);
 
-        $this->assertNotEmpty($snippet->forks());
+        $this->assertNotEmpty($snippet->forks);
     }
 
     /** @test */

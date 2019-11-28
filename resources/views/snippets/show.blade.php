@@ -52,11 +52,27 @@
         </form>
     </div>
 
+    <hr />
 
-    @foreach($snippet->comments as $comment)
-    <div>
-        <h4>{{$comment->user->name}}</h4>
-        <p>{{$comment->body}}</p>
+    <div class="col-md-10">
+        @if ($snippet->comments)
+        @foreach ($snippet->comments as $comment)
+            <div class="card mb-4">
+                <div class="card-body">
+                    {{$comment->body}}
+                    <br>
+                    - {{$comment->creator->name}}
+                </div>
+                <div class="card-footer text-muted">
+                    <form action="/comments/{{$comment->id}}/like" method="post">
+                        @csrf
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-thumbs-up"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+        @endif
     </div>
-    @endforeach
 @endsection

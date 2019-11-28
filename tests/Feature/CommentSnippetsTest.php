@@ -13,7 +13,6 @@ class CommentSnippetsTest extends TestCase
 
     public function test_a_user_can_comment_on_a_snippet()
     {
-        $this->withoutExceptionHandling();
         $this->signIn();
 
 

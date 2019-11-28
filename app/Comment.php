@@ -13,8 +13,8 @@ class Comment extends Model
         return $this->belongsTo(Snippet::class);
     }
 
-    public function user()
+    public function creator()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

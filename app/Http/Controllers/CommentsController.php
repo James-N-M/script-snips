@@ -35,6 +35,8 @@ class CommentsController extends Controller
      */
     public function store()
     {
+        $this->authorize('create', Comment::class);
+
         Comment::create([
             'body' => request('body'),
             'user_id' => auth()->id(),

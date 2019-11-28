@@ -14,8 +14,8 @@
 Route::get('/snippets', 'SnippetsController@index')->name('home');
 Route::get('/snippets/create', 'SnippetsController@create');
 Route::get('/snippets/{snippet}', 'SnippetsController@show');
-Route::get('snippets/languages/{language}', 'LanguageSnippetsController@index');
-Route::get('/snippets/{language}', 'SnippetsController@index');
+Route::get('/snippets/languages/{language}', 'LanguageSnippetsController@index');
+Route::post('snippets/{snippet}/comments', 'CommentsController@store');
 Route::get('/snippets/{snippet}/fork', 'SnippetsController@create');
 Route::post('/snippets/{snippet}/like', 'SnippetLikesController@store');
 Route::post('/snippets/{snippet}/unlike', 'SnippetLikesController@store');

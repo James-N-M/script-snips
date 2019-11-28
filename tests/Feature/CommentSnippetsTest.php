@@ -16,8 +16,22 @@ class CommentSnippetsTest extends TestCase
         $this->withoutExceptionHandling();
         $this->signIn();
 
-        $snippet = factory(Snippet::class)->create(['language_id' => $language->id]);
 
-        $this->get("/snippets/languages/$language->name")->assertSee($snippet->body);
+        $snippet = factory(Snippet::class)->create();
+
+        $attributes = [
+            'body' => $this->faker->sentence,
+            'snippet_id' => $snippet->id
+        ];
+
+        $this->get('/snippets/' . $snippet->id)->assertStatus(200);
+
+        $this->post("/snippets/$snippet->id/comments", $attributes);
+
+        $this->assertDatabaseHas('comments', [
+            'user_id' => auth()->id(),
+            'snippet_id' => $snippet->id, // id of the like able object
+            'body' => $attributes['body'], // which just be snippet
+        ]);
     }
 }

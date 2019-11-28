@@ -38,4 +38,25 @@
             @endforeach
         </ul>
     @endif
+
+    <div class="mb-5">
+        <h3>Add a comment</h3>
+        <form action="/snippets/{{$snippet->id}}/comments" method="post">
+            <?php echo (csrf_field()); ?>
+                <input type="hidden" name="snippet_id" value="{{$snippet->id}}">
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea rows="4" name="body" type="text" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add comment</button>
+        </form>
+    </div>
+
+
+    @foreach($snippet->comments as $comment)
+    <div>
+        <h4>{{$comment->user->name}}</h4>
+        <p>{{$comment->body}}</p>
+    </div>
+    @endforeach
 @endsection

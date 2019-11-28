@@ -7,15 +7,13 @@ use App\Snippet;
 
 class SnippetsController extends Controller
 {
-    public function index(Language $language = null)
+    public function index()
     {
-        $snippets = Snippet::forLanguage($language)
-            ->latest()
-            ->paginate(2);
+        $snippets = Snippet::latest()->paginate(2);
 
         $languages = Language::all();
 
-        return view('snippets.index', compact('snippets', 'languages', 'language'));
+        return view('snippets.index', compact('snippets', 'languages'));
     }
 
     public function create(Snippet $snippet)

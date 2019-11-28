@@ -64,7 +64,7 @@ class SnippetsTest extends TestCase
         $this->get("/snippets/$snippet->id")->assertSee($snippet->body);
     }
 
-    public function test_a_guest_can_fork_a_snippet()
+    public function test_a_user_can_fork_a_snippet()
     {
         $this->signIn();
 

@@ -8,7 +8,7 @@
                     <li>All</li>
                 </a>
                 @foreach($languages as $l)
-                    <a href="/snippets/{{$l->name}}">
+                    <a href="/snippets/languages/{{$l->name}}">
                         <li>{{$l->name}}</li>
                     </a>
                 @endforeach
@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-md-10">
-            @if ($language)
+            @if (isset($language))
                 <h2>{{ $language->name }} Snippets</h2>
             @else
                 <h2>Snippets</h2>

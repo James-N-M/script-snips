@@ -27,10 +27,12 @@
         @include('partials/nav-bar')
 
         <div class="jumbotron">
-            <h1 class="display-4">{{ config('app.name', 'Laravel') }}</h1>
-            <p class="lead">Create scripts, fork scripts, share scripts ... look at scripts ?</p>
-            <hr class="my-4">
-            <a class="btn btn-success btn-lg" href="/snippets/create" role="button">Create snip</a>
+            <div class="container">
+                <h1 class="display-4">{{ config('app.name', 'Laravel') }}</h1>
+                <p class="lead">Create scripts, fork scripts, share scripts ... look at scripts ?</p>
+                <hr class="my-4">
+                <a class="btn btn-success btn-lg" href="/snippets/create" role="button">Create snip</a>
+            </div>
         </div>
 
         <main class="container">

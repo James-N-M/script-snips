@@ -35,6 +35,11 @@ class Snippet extends Model
         return $this->belongsTo(Language::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function scopeForLanguage($builder, $language)
     {
         if($language) {

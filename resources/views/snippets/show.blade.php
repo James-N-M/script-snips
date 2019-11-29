@@ -68,6 +68,7 @@
                         @csrf
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-thumbs-up"></i>
+                            <span>{{$comment->likesCount}}</span>
                         </button>
                     </form>
                 </div>

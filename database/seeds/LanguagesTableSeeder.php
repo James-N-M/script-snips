@@ -13,10 +13,17 @@ class LanguagesTableSeeder extends Seeder
     public function run()
     {
         $languages = collect([
-            ['name' =>'Php'],
-            ['name' =>'Javascript'],
-            ['name' =>'Go'],
-            ['name' =>'Bash'],
+            ['name' =>'php'],
+            ['name' =>'javascript'],
+            ['name' =>'go'],
+            ['name' =>'bash'],
+            ['name' =>'python'],
+            ['name' =>'java'],
+            ['name' =>'c++'],
+            ['name' =>'sql'],
+            ['name' =>'ruby'],
+            ['name' =>'c#'],
+            ['name' =>'haskell'],
         ]);
         $languages->each(function($language) {
             Language::create($language);

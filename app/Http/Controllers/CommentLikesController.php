@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Snippet;
+use App\Comment;
 
-class SnippetLikesController extends Controller
+class CommentLikesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,11 +27,17 @@ class SnippetLikesController extends Controller
         //
     }
 
-    public function store(Snippet $snippet)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Comment $comment)
     {
-        // authorize to like a snippet
-        $snippet->toggle();
-        return redirect('/');
+        // authorized to like a comment
+        $comment->toggle();
+        return redirect()->back();
     }
 
     /**

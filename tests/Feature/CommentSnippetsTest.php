@@ -32,5 +32,9 @@ class CommentSnippetsTest extends TestCase
             'snippet_id' => $snippet->id, // id of the like able object
             'body' => $attributes['body'], // which just be snippet
         ]);
+
+        $this->get('/snippets/' . $snippet->id)
+            ->assertStatus(200)
+            ->assertSee($attributes['body']);
     }
 }

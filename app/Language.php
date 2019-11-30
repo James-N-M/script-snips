@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Language extends Model
 {
-    // so the slug grabs the language in snippets
+    // Uses name of model to find Language when using ** Route Model Binding **
     public function getRouteKeyName()
     {
         return 'name';

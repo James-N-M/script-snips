@@ -33,14 +33,18 @@
 
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/users/{{auth()->id()}}/snippets">
+                                My snips
+                            </a>
+
+                            <a class="dropdown-item" href="/users/{{auth()->id()}}/profile">
+                                My profile
+                            </a>
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
-                            </a>
-
-                            <a class="dropdown-item" href="/user/{{auth()->id()}}/snippets">
-                                My snips
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

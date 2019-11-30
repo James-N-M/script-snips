@@ -20,6 +20,9 @@ Route::get('/snippets/{snippet}', 'SnippetsController@show');
 Route::get('/snippets/{snippet}/fork', 'SnippetsController@create');
 Route::post('/snippets', 'SnippetsController@store');
 
+Route::post('/languages/{language}/favorites', 'LanguageFavoritesController@store');
+
+
 // Snippet Likes Controller routes
 Route::post('/snippets/{snippet}/like', 'SnippetLikesController@store');
 Route::post('/snippets/{snippet}/unlike', 'SnippetLikesController@store');
@@ -35,7 +38,10 @@ Route::post('/comments/{comment}/like', 'CommentLikesController@store');
 Route::post('/comments/{comment}/unlike', 'CommentLikesController@store');
 
 // User Snippets Controller routes
-Route::get('user/{user}/snippets', 'UserSnippets@index');
+Route::get('users/{user}/snippets', 'UserSnippets@index');
+
+// Users Controller routes
+Route::get('users/{user}/profile', 'UsersController@profile');
 
 Auth::routes();
 

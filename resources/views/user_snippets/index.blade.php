@@ -10,7 +10,6 @@
             <div class="card-body">
                 <!-- Has to be in this format or will break -->
                 <pre class="p-2"><code>{{$snippet->body}}</code></pre>
-                <a href="#" class="btn btn-primary">Call to Action</a>
             </div>
             <div class="card-footer text-muted">
                 2 days ago

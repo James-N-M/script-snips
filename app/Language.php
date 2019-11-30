@@ -11,4 +11,10 @@ class Language extends Model
     {
         return 'name';
     }
+
+    // check if this language is favorited by a user
+    public function isFavorited()
+    {
+        return !! auth()->user()->languages()->where('language_id', $this->id)->count();
+    }
 }

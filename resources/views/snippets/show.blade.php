@@ -1,13 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-between">
-        <h1>{{ $snippet->title }}</h1>
-
-        <a href="/snippets/{{$snippet->id}}/fork">Fork it</a>
+    <div class="d-flex justify-content-end mb-2">
+        <a class="btn btn-primary" href="/snippets/{{$snippet->id}}/fork">Fork it</a>
     </div>
 
-    <pre><code>{{ $snippet->body }}</code></pre>
+    @include('partials/snippet-card')
 
     <p>
         <a href="/">Back</a>
@@ -39,7 +37,7 @@
         </ul>
     @endif
 
-    <div class="mb-5">
+    <div class="mb-5 mt-5">
         <h3>Add a comment</h3>
         <form action="/snippets/{{$snippet->id}}/comments" method="post">
             <?php echo (csrf_field()); ?>
@@ -55,25 +53,8 @@
     <hr />
 
     <div class="col-md-10">
-        @if ($snippet->comments)
         @foreach ($snippet->comments as $comment)
-            <div class="card mb-4">
-                <div class="card-body">
-                    {{$comment->body}}
-                    <br>
-                    - {{$comment->creator->name}}
-                </div>
-                <div class="card-footer text-muted">
-                    <form action="/comments/{{$comment->id}}/like" method="post">
-                        @csrf
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-thumbs-up"></i>
-                            <span>{{$comment->likesCount}}</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
+            @include('partials/comment-card')
         @endforeach
-        @endif
     </div>
 @endsection

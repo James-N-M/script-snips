@@ -2,6 +2,7 @@
 
 @section('content')
     <h2>{{auth()->user()->name}} Snippets</h2>
+    <a href="/">Back</a>
     @foreach ($snippets as $snippet)
         <div class="card mb-4">
             <h3 class="card-header text-primary">

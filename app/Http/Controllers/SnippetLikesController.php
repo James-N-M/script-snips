@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Snippet;
+use App\Like;
 
 class SnippetLikesController extends Controller
 {
@@ -29,9 +30,10 @@ class SnippetLikesController extends Controller
 
     public function store(Snippet $snippet)
     {
-        // authorize to like a snippet
+        $this->authorize('create', Like::class);
+
         $snippet->toggle();
-        return redirect('/');
+        return redirect()->back();
     }
 
     /**
